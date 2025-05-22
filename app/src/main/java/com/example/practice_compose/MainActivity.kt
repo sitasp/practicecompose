@@ -25,8 +25,15 @@ class MainActivity : ComponentActivity() {
         setContent {
             Box(modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center) {
+                Text(text = "Hello", modifier = Modifier.align(Alignment.TopStart))
                 Text(text = "Hello", modifier = Modifier.align(Alignment.TopCenter))
-//                Text(text = "Welcome")
+                Text(text = "Hello", modifier = Modifier.align(Alignment.TopEnd))
+                Text(text = "Hello", modifier = Modifier.align(Alignment.CenterStart))
+                Text(text = "Hello", modifier = Modifier.align(Alignment.Center))
+                Text(text = "Hello", modifier = Modifier.align(Alignment.CenterEnd))
+                Text(text = "Hello", modifier = Modifier.align(Alignment.BottomStart))
+                Text(text = "Hello", modifier = Modifier.align(Alignment.BottomCenter))
+                Text(text = "Hello", modifier = Modifier.align(Alignment.BottomEnd))
             }
         }
     }
