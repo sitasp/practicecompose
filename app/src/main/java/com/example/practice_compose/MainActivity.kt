@@ -25,13 +25,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Box(
-                modifier = Modifier
-                    .padding(10.dp)
-                    .fillMaxWidth()
-                    .fillMaxHeight(0.5f)
-                    .background(color=Color.Red, shape= RectangleShape)
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
             ){
-
+                Box(
+                    modifier = Modifier
+                        .size(100.dp)
+                        .background(Color.Green)
+                )
             }
         }
     }
