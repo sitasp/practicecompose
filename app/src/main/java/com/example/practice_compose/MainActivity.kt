@@ -26,10 +26,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             Box(
                 modifier = Modifier
+                    .padding(10.dp)
                     .fillMaxWidth()
                     .fillMaxHeight(0.5f)
                     .background(color=Color.Red, shape= RectangleShape)
-                    .padding(start = 10.dp, top = 10.dp, end = 10.dp)
             ){
 
             }
