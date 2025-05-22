@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Box(modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center) {
-                Text(text = "Hello")
+                Text(text = "Hello", modifier = Modifier.align(Alignment.TopCenter))
 //                Text(text = "Welcome")
             }
         }
