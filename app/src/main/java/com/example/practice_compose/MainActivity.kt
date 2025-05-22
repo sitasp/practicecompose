@@ -14,6 +14,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,19 +32,18 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Row(modifier = Modifier.fillMaxWidth()) {
-                Box(modifier = Modifier
-                    .background(Color.Red)
-                    .height(100.dp)
-                    .weight(2f)
-                )
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
 
-                Spacer(modifier = Modifier.width(5.dp))
+                // creating states
+                val textState = remember {
+                    mutableStateOf("")
+                };
 
-                Box(modifier = Modifier
-                    .background(Color.Red)
-                    .height(100.dp)
-                    .weight(1f)
+                TextField(
+                    value = textState.value, onValueChange = {
+                        textState.value = it
+                    },
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
         }
