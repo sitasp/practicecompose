@@ -26,8 +26,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Box(
                 modifier = Modifier
-                    .height(100.dp)
-                    .width(200.dp)
+                    .fillMaxSize()
                     .background(color=Color.Red, shape= RectangleShape)
             ){
 
