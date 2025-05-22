@@ -30,22 +30,20 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ){
+            Row(modifier = Modifier.fillMaxWidth()) {
                 Box(modifier = Modifier
-                    .width(200.dp)
+                    .background(Color.Red)
                     .height(100.dp)
-                    .clip(RoundedCornerShape(15.dp))
-                    .background(Color(0xFFBB86FC))
-                    .clickable {
-                        Log.d("test", "click")
-                    },
-                    contentAlignment = Alignment.Center
-                ){
-                    Text(text = "Button", color = Color.White)
-                }
+                    .weight(2f)
+                )
+
+                Spacer(modifier = Modifier.width(5.dp))
+
+                Box(modifier = Modifier
+                    .background(Color.Red)
+                    .height(100.dp)
+                    .weight(1f)
+                )
             }
         }
     }
