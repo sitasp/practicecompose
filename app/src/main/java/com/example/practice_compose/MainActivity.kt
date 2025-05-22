@@ -10,6 +10,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
@@ -19,10 +20,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             Column(modifier = Modifier.fillMaxSize()) {
 
-                var textState by remember {
+                // rememberSaveable is used to save the state of the list across configuration changes (like display orientation)
+                var textState by rememberSaveable {
                     mutableStateOf("")
                 }
 
+                // rememberSaveable can't be used for mutableStatListOf
                 val namesListState = remember {
                     mutableStateListOf<String>()
                 }
