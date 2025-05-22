@@ -1,14 +1,17 @@
 package com.example.practice_compose
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -31,14 +34,18 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ){
-                Box(
-                    modifier = Modifier
-                        .size(100.dp)
-                        .clip(CircleShape)
-                        .border(width = 10.dp, color = Color.Red, shape = CircleShape)
-                        .border(width = 20.dp, color = Color.Yellow, shape = CircleShape)
-                        .background(Color.Green)
-                )
+                Box(modifier = Modifier
+                    .width(200.dp)
+                    .height(100.dp)
+                    .clip(RoundedCornerShape(15.dp))
+                    .background(Color(0xFFBB86FC))
+                    .clickable {
+                        Log.d("test", "click")
+                    },
+                    contentAlignment = Alignment.Center
+                ){
+                    Text(text = "Button", color = Color.White)
+                }
             }
         }
     }
