@@ -26,10 +26,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             Box(
                 modifier = Modifier
-                    .size(100.dp)
+                    .height(100.dp)
+                    .width(200.dp)
                     .background(color=Color.Red, shape= RectangleShape)
             ){
-                
+
             }
         }
     }
