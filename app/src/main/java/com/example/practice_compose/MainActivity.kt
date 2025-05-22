@@ -14,7 +14,15 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                MyTextField()
+                var textState by remember {
+                    mutableStateOf("")
+                }
+                MyTextField(
+                    textState = textState,
+                    onValueChanged = {
+                        textState = it
+                    }
+                )
             }
         }
     }
@@ -22,18 +30,16 @@ class MainActivity : ComponentActivity() {
 
 
 
-// stateful component
+// stateless component
 @Composable
-fun MyTextField () {
-    // creating states
-    var textState by remember {
-        mutableStateOf("")
-    };
-
+fun MyTextField (
+    textState: String,
+    onValueChanged: (String) -> Unit
+) {
     TextField(
         value = textState,
         onValueChange = {
-            textState = it
+            onValueChanged(it)
         },
         modifier = Modifier.fillMaxWidth()
     )
