@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
@@ -23,17 +24,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Box(modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center) {
-                Text(text = "Hello", modifier = Modifier.align(Alignment.TopStart))
-                Text(text = "Hello", modifier = Modifier.align(Alignment.TopCenter))
-                Text(text = "Hello", modifier = Modifier.align(Alignment.TopEnd))
-                Text(text = "Hello", modifier = Modifier.align(Alignment.CenterStart))
-                Text(text = "Hello", modifier = Modifier.align(Alignment.Center))
-                Text(text = "Hello", modifier = Modifier.align(Alignment.CenterEnd))
-                Text(text = "Hello", modifier = Modifier.align(Alignment.BottomStart))
-                Text(text = "Hello", modifier = Modifier.align(Alignment.BottomCenter))
-                Text(text = "Hello", modifier = Modifier.align(Alignment.BottomEnd))
+            Column {
+                Text("Hello")
+                Text("World!")
             }
         }
     }
