@@ -3,75 +3,95 @@ package com.example.practice_compose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.ViewModelProvider
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
-
-    val viewModel by lazy {
-        ViewModelProvider(this).get(MyViewModel::class.java)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
 
-            val state = viewModel.state.value
-
-            Column(modifier = Modifier.fillMaxSize()) {
-
-                LazyColumn(
-                    modifier = Modifier.fillMaxWidth()
-                        .weight(1f)
-                ){
-                    items(state.namesList.size) { index ->
-                        Text(
-                            text = state.namesList[index]
-                        )
-                    }
+            Box(
+                modifier = Modifier.fillMaxSize()
+                    .background(Color.Black),
+                contentAlignment = Alignment.Center
+            ) {
+                val annotatedString = buildAnnotatedString {
+                    blueGradientText("Welcome to")
+                    append("\n\n")
+                    pinkBlueGradientText("Land of sages, ")
+                    append("\n\n")
+                    pinkGradientText("Aryavarta!!")
                 }
 
-                MyTextField(
-                    textState = state.text,
-                    onValueChanged = {
-                        viewModel.updateText(it)
-                    },
-                    onAddClick = {
-                        viewModel.updateNamesList(state.text)
-                        viewModel.updateText("")
-                    }
-                )
+                Text(annotatedString)
             }
         }
     }
-}
 
-
-
-// stateless component
-@Composable
-fun MyTextField (
-    textState: String,
-    onValueChanged: (String) -> Unit,
-    onAddClick: () -> Unit
-) {
-    TextField(
-        value = textState,
-        onValueChange = {
-            onValueChanged(it)
-        },
-        modifier = Modifier.fillMaxWidth(),
-        trailingIcon = {
-            Icon(imageVector = Icons.Default.Add, contentDescription = null, modifier = Modifier.clickable { onAddClick() })
+    private fun AnnotatedString.Builder.blueGradientText(text: String) {
+        withStyle(
+            style = SpanStyle(
+                brush = Brush.linearGradient(
+                    colors = listOf(
+                        Color(0xFF2788C7),
+                        Color(0xFF00BBD4)
+                    )
+                ),
+                fontSize = 42.sp,
+                fontWeight = FontWeight.Medium
+            )
+        ) {
+            append(text)
         }
-    )
+    }
+
+    private fun AnnotatedString.Builder.pinkBlueGradientText(text: String) {
+        withStyle(
+            style = SpanStyle(
+                brush = Brush.linearGradient(
+                    colors = listOf(
+                        Color(0xFFFF3B85),
+                        Color(0xFF00BBD4)
+                    )
+                ),
+                fontSize = 48.sp,
+                fontWeight = FontWeight.Medium
+            )
+        ) {
+            append(text)
+        }
+    }
+
+
+    private fun AnnotatedString.Builder.pinkGradientText(text: String) {
+        withStyle(
+            style = SpanStyle(
+                brush = Brush.linearGradient(
+                    colors = listOf(
+                        Color(0xFFFF3B85),
+                        Color(0xFFCC0552)
+                    )
+                ),
+                fontSize = 48.sp,
+                fontWeight = FontWeight.Medium
+            )
+        ) {
+            append(text)
+        }
+    }
 }
