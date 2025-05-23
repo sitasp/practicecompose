@@ -33,7 +33,8 @@ class MainActivity : ComponentActivity() {
                 Button(
                     modifier = Modifier.height(50.dp).width(140.dp),
                     shape = RoundedCornerShape(topStart = 10.dp, bottomEnd = 10.dp),
-                    onClick = {}
+                    onClick = {},
+                    enabled = false
                 ) {
                     Text("Click me!")
                 }
