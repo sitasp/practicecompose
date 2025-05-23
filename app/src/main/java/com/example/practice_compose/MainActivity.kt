@@ -3,6 +3,7 @@ package com.example.practice_compose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -24,7 +25,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Box(
+                modifier = Modifier.fillMaxSize()
+                    .background(Color.Black),
+                contentAlignment = Alignment.Center
+            ) {
                 val annotatedString = buildAnnotatedString {
                     blueGradientText("Welcome to")
                     append("\n\n")
