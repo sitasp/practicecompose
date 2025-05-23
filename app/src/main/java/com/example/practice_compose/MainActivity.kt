@@ -13,42 +13,41 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : ComponentActivity() {
+
+    val viewModel by lazy {
+        ViewModelProvider(this).get(MyViewModel::class.java)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+
+            val state = viewModel.state.value
+
             Column(modifier = Modifier.fillMaxSize()) {
-
-                // rememberSaveable is used to save the state of the list across configuration changes (like display orientation)
-                var textState by rememberSaveable {
-                    mutableStateOf("")
-                }
-
-                // rememberSaveable can't be used for mutableStatListOf
-                val namesListState = remember {
-                    mutableStateListOf<String>()
-                }
 
                 LazyColumn(
                     modifier = Modifier.fillMaxWidth()
                         .weight(1f)
                 ){
-                    items(namesListState.size) { index ->
+                    items(state.namesList.size) { index ->
                         Text(
-                            text = namesListState[index]
+                            text = state.namesList[index]
                         )
                     }
                 }
 
                 MyTextField(
-                    textState = textState,
+                    textState = state.text,
                     onValueChanged = {
-                        textState = it
+                        viewModel.updateText(it)
                     },
                     onAddClick = {
-                        namesListState.add(textState)
-                        textState = ""
+                        viewModel.updateNamesList(state.text)
+                        viewModel.updateText("")
                     }
                 )
             }
