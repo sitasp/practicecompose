@@ -32,25 +32,10 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                Button(
-                    modifier = Modifier.height(50.dp).width(140.dp),
-                    shape = RoundedCornerShape(topStart = 10.dp, bottomEnd = 10.dp),
-                    onClick = {
-                        println("Clicked button's icon id is: " + R.drawable.ic_launcher_foreground)
-                    },
-                    enabled = true,
-                    elevation = ButtonDefaults.buttonElevation(
-                        defaultElevation = 10.dp
-                    ),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFF0073EE),
-                        contentColor = Color.White,
-                        disabledContainerColor = Color(0xFFB9F3F3),
-                        disabledContentColor = Color.White
-                    ),
-                ) {
-                    Icon(painter = painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = "Icon")
-                    Text("Click me!")
+                TextButton(onClick = {
+                    println("Button clicked")
+                }) {
+                    Text(text = "Click Me")
                 }
             }
         }
