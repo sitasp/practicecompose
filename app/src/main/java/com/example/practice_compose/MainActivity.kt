@@ -32,10 +32,13 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                TextButton(onClick = {
+                IconButton(onClick = {
                     println("Button clicked")
                 }) {
-                    Text(text = "Click Me")
+                    Icon(
+                        painter = painterResource(R.drawable.ic_launcher_foreground),
+                        contentDescription = "Icon",
+                    )
                 }
             }
         }
