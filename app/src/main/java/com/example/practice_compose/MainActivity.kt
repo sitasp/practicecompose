@@ -34,7 +34,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.height(50.dp).width(140.dp),
                     shape = RoundedCornerShape(topStart = 10.dp, bottomEnd = 10.dp),
                     onClick = {},
-                    enabled = false
+                    enabled = true,
+                    elevation = ButtonDefaults.buttonElevation(
+                        defaultElevation = 10.dp
+                    )
                 ) {
                     Text("Click me!")
                 }
