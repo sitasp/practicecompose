@@ -34,10 +34,16 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.height(50.dp).width(140.dp),
                     shape = RoundedCornerShape(topStart = 10.dp, bottomEnd = 10.dp),
                     onClick = {},
-                    enabled = true,
+                    enabled = false,
                     elevation = ButtonDefaults.buttonElevation(
                         defaultElevation = 10.dp
-                    )
+                    ),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFF0073EE),
+                        contentColor = Color.White,
+                        disabledContainerColor = Color(0xFFB9F3F3),
+                        disabledContentColor = Color.White
+                    ),
                 ) {
                     Text("Click me!")
                 }
