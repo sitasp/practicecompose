@@ -12,8 +12,12 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : ComponentActivity() {
@@ -23,22 +27,20 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                setContent {
 
-                Text(
-                    text = stringResource(id = R.string.land_of_sages)
-                                    .plus(" ")
-                                    .repeat(30),
-                    maxLines = 3,
-                    overflow = TextOverflow.Ellipsis
-                )
+                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
 
-
-
-//                Text(
-//                    text = "Land of sages, aryavarta",
-//                    color =
-//                )
-
+                        Text(
+                            text = "The land of sages, aryavarta !!",
+                            color = Color.Magenta,
+                            fontSize = 32.sp,
+                            textDecoration = TextDecoration.Underline,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                }
             }
         }
     }
