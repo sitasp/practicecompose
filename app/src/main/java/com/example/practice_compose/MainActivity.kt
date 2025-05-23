@@ -13,6 +13,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -33,8 +35,10 @@ class MainActivity : ComponentActivity() {
                 Button(
                     modifier = Modifier.height(50.dp).width(140.dp),
                     shape = RoundedCornerShape(topStart = 10.dp, bottomEnd = 10.dp),
-                    onClick = {},
-                    enabled = false,
+                    onClick = {
+                        println("Clicked button's icon id is: " + R.drawable.ic_launcher_foreground)
+                    },
+                    enabled = true,
                     elevation = ButtonDefaults.buttonElevation(
                         defaultElevation = 10.dp
                     ),
@@ -45,6 +49,7 @@ class MainActivity : ComponentActivity() {
                         disabledContentColor = Color.White
                     ),
                 ) {
+                    Icon(painter = painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = "Icon")
                     Text("Click me!")
                 }
             }
