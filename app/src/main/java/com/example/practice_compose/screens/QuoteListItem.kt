@@ -21,10 +21,10 @@ import com.example.practice_compose.models.Quote
 
 
 @Composable
-fun QuoteListItem(quote: Quote, onClick: () -> Unit) {
+fun QuoteListItem(quote: Quote, onClick: (quote: Quote) -> Unit) {
     Card(
         modifier = Modifier
-            .clickable { onClick() }
+            .clickable { onClick(quote) }
             .padding(8.dp)
             .background(Color.Black)
     ) {
