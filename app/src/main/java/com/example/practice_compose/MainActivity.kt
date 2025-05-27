@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.practice_compose.screens.QuoteDetail
 import com.example.practice_compose.screens.QuoteListScreen
+import com.example.practice_compose.ui.theme.PracticecomposeTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -25,7 +26,9 @@ class MainActivity : ComponentActivity() {
         }
 
         setContent {
-            App()
+            PracticecomposeTheme {
+                App()
+            }
         }
     }
 }
